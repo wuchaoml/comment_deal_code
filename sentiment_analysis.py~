@@ -1,0 +1,49 @@
+
+
+class sentimentAnalysis(object):
+    """docstring for sentimentAnalysis"""
+
+    def __init__(self):
+        super(sentimentAnalysis, self).__init__()
+        self.negative_list = []
+        self.positive_list = []
+        self.sentimentWordLoad()
+
+    def sentimentWordLoad(self):
+        with open('../source/negative_list.txt', 'r') as f:
+            while True:
+                negative_word = f.readline().strip()
+                if negative_word != '':
+                    self.negative_list.append(negative_word)
+                else:
+                    break
+            self.negative_list = list(set(self.negative_list))
+
+        with open('../source/positive_list.txt', 'r') as f:
+            while True:
+                positive_word = f.readline().strip()
+                if positive_word != '':
+                    self.positive_list.append(positive_word)
+                else:
+                    break
+            self.positive_list = list(set(self.positive_list))
+            print(len(self.positive_list))
+
+    def sentimentJudge(self):
+        for word_pair in self.comment_word_pair:
+            if word_pair[1] in self.negative_list:
+                pass
+
+            elif word_pair[1] in self.positive_list:
+                pass
+
+            else:
+                pass
+
+
+def main():
+    comment_sentiment_analysis = sentimentAnalysis()
+
+
+if __name__ == '__main__':
+    main()
